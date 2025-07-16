@@ -1,0 +1,76 @@
+{
+  "name": "Warehouse Optimization System",
+  "description": "Advanced logistics optimization workflow that analyzes warehouse PDFs and CSV inventory data to optimize stock locations based on fast/slow movers and item co-occurrence patterns",
+  "workflow_id": "S3HgUMmpXny85Vd4",
+  "created_at": "2025-07-16T20:58:58.798Z",
+  "features": [
+    "PDF warehouse layout processing",
+    "CSV inventory data analysis",
+    "Fast/slow mover identification",
+    "Item co-occurrence analysis",
+    "Automated optimization recommendations",
+    "PostgreSQL database storage",
+    "PDF report generation",
+    "GitHub backup integration"
+  ],
+  "workflow_capabilities": {
+    "input_processing": {
+      "pdf_analysis": "Extracts warehouse layout, zones, locations from PDF documents",
+      "csv_processing": "Parses inventory mutation data with order history",
+      "file_validation": "Automatically detects and routes PDF vs CSV files"
+    },
+    "analytics_engine": {
+      "velocity_analysis": "Identifies fast movers (top 20%) and slow movers (bottom 20%)",
+      "cooccurrence_analysis": "Finds items frequently ordered together",
+      "zone_optimization": "Assigns optimal warehouse zones based on accessibility needs"
+    },
+    "output_generation": {
+      "optimization_plan": "Detailed recommendations for item placement",
+      "professional_reports": "HTML/PDF reports with executive summary",
+      "database_storage": "Persistent storage of analysis results",
+      "github_backup": "Automatic version control of reports"
+    }
+  },
+  "usage_instructions": {
+    "webhook_endpoint": "POST to /webhook/warehouse-optimization",
+    "required_files": [
+      "Warehouse layout PDF (with zones, locations, dimensions)",
+      "CSV file with columns: article_id, order_id, quantity, date"
+    ],
+    "expected_csv_format": {
+      "article_id": "SKU or item identifier",
+      "order_id": "Unique order identifier",
+      "quantity": "Number of items ordered",
+      "date": "Order date (ISO format preferred)"
+    },
+    "database_setup": {
+      "table_name": "warehouse_optimization",
+      "required_columns": [
+        "analysis_date TIMESTAMP",
+        "fast_movers JSONB",
+        "slow_movers JSONB",
+        "item_pairs JSONB",
+        "recommendations JSONB",
+        "warehouse_layout JSONB"
+      ]
+    }
+  },
+  "optimization_algorithms": {
+    "abc_analysis": "Categorizes items by velocity (A=fast, B=medium, C=slow)",
+    "affinity_analysis": "Market basket analysis for item co-occurrence",
+    "zone_assignment": "Strategic placement based on accessibility requirements",
+    "efficiency_metrics": "Calculates picking time reduction and space optimization"
+  },
+  "business_impact": {
+    "picking_efficiency": "Reduces travel time by placing fast movers near shipping",
+    "space_optimization": "Maximizes prime real estate usage",
+    "labor_cost_reduction": "Optimized picking routes reduce operational costs",
+    "inventory_management": "Data-driven decisions for warehouse layout"
+  },
+  "technical_notes": {
+    "pdf_parsing": "Uses regex patterns to extract location codes and zones",
+    "statistical_analysis": "Implements percentile-based velocity classification",
+    "report_generation": "Creates professional HTML reports with CSS styling",
+    "error_handling": "Graceful handling of missing data and file format issues"
+  }
+}
