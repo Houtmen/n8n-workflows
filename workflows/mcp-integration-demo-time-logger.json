@@ -1,0 +1,72 @@
+{
+  "id": "F86zhNv7lfRt24WD",
+  "name": "MCP Integration Demo - Time Logger",
+  "active": false,
+  "nodes": [
+    {
+      "id": "trigger",
+      "name": "Every 5 Minutes",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minute",
+              "triggerAtMinute": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "logger",
+      "name": "Log Current Time",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "timestamp",
+              "value": "={{ new Date().toISOString() }}"
+            },
+            {
+              "name": "message",
+              "value": "Workflow executed successfully via MCP integration!"
+            },
+            {
+              "name": "source",
+              "value": "n8n-MCP Server"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Log Current Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "deployed_via": "n8n-MCP",
+    "created_at": "2025-07-16T20:40:54.543Z",
+    "workflow_id": "F86zhNv7lfRt24WD",
+    "version_id": "de4f2a51-396d-46ab-a048-2afd0766bd53",
+    "description": "Demo workflow showing successful MCP integration - automatically deploys to n8n and saves to GitHub"
+  }
+}
